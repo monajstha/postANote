@@ -1,10 +1,15 @@
 import express, { Request, Response, Express, NextFunction } from "express";
 import { errorHandler } from "@middlewares/errorHandler";
-import routes from "@routes/index";
+import authRoutes from "@routes/authRoute";
+import dashboardRoutes from "@routes/dashboardRoute";
 // import categoryRoutes from '@routes/categoryRoutes';
 // import authRoutes from '@routes/authRoutes';
 import path from "path";
 import methodOverride from "method-override";
+import passport from "@config/passport";
+import session from "express-session";
+import connectPgSimple from "connect-pg-simple";
+import pool from "@db/pool";
 
 const app = express();
 
@@ -17,14 +22,39 @@ app.use(methodOverride("_method")); // look for ?_method=PUT in POST requests
 app.set("views", path.join(__dirname, "./views"));
 app.set("view engine", "ejs");
 
-// Routes
-app.use("/", routes);
-// app.use('/categories', categoryRoutes);
-// app.use('/auth', authRoutes);
-
 // serve static assets
 const assetsPath = path.join(__dirname, "../public");
 app.use(express.static(assetsPath));
+
+const pgSession = connectPgSimple(session);
+
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET as string,
+    store: new pgSession({
+      pool: pool,
+      createTableIfMissing: true,
+    }),
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      maxAge: 1000 * 60 * 60 * 24,
+      secure: process.env.NODE_ENV === "production",
+    },
+  })
+);
+
+app.use(passport.session());
+
+app.use((req, res, next) => {
+  console.log("Session", req.session);
+  //   req.locals.currentUser = req.user;
+  console.log("req.user", req.user);
+  next();
+});
+
+// Routes
+app.use("/", authRoutes);
 
 // Handle all unmatched routes
 app.use((req: Request, res: Response, next: NextFunction) => {

@@ -10,8 +10,10 @@
     "module": "nodenext",
     "target": "esnext",
     "types": [],
+    "typeRoots": ["./types", "./node_modules/@types"],
     "baseUrl": "./",
     "paths": {
+      "@config/*": ["src/config/*"],
       "@controllers/*": ["src/controllers/*"],
       "@routes/*": ["src/routes/*"],
       "@middlewares/*": ["src/middlewares/*"],
@@ -19,7 +21,9 @@
       "@styles/*": ["/public/*"],
       "@db/*": ["src/db/*"],
       "@utils/*": ["src/utils/*"],
-      "@lib/*": ["src/lib/*"]
+      "@lib/*": ["src/lib/*"],
+      "@types/*": ["src/types/*"],
+      "@interface/*": ["src/interface/*"]
     },
     // For nodejs:
     // "lib": ["esnext"],

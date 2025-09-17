@@ -4,3 +4,10 @@ export interface IUserSignup {
   username: string;
   password: string;
 }
+
+export interface IUSer extends IUserSignup {
+  user_id: string;
+  is_club_member: boolean;
+  created_at: Date;
+  updated_at: Date;
+}

@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import * as db from "@db/queries";
 import { Result, QueryResult } from "pg";
+import bcrypt from "bcrypt";
 
 export const loginFormGet = (
   req: Request,
@@ -34,11 +35,12 @@ export const signupFormPost = async (
   try {
     console.log(req.body);
     const { first_name, last_name, username, password } = req.body;
+    const hashedPassword = await bcrypt.hash(password, 10);
     const rowCount = await db.insertNewUser({
       first_name,
       last_name,
       username,
-      password,
+      password: hashedPassword,
     });
     if (rowCount) {
       res.status(201).redirect("/log-in");
