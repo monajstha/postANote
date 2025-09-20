@@ -27,6 +27,8 @@ app.use(express.static(assetsPath));
 
 const pgSession = connectPgSimple(session);
 
+app.set("trust proxy", 1);
+
 app.use(
   session({
     secret: process.env.SESSION_SECRET as string,
@@ -39,6 +41,7 @@ app.use(
     cookie: {
       maxAge: 1000 * 60 * 60 * 24,
       secure: process.env.NODE_ENV === "production",
+      sameSite: "lax",
     },
   })
 );
