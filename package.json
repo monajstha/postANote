@@ -15,19 +15,19 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
-    "@types/express": "^5.0.3",
-    "@types/node": "^24.5.0",
-    "dotenv": "^17.2.2",
     "eslint": "^9.35.0",
-    "express": "^5.1.0",
     "install": "^0.13.0",
     "nodemon": "^3.1.10",
     "npm": "^11.6.0",
-    "prettier": "^3.6.2",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.9.2"
+    "prettier": "^3.6.2"
   },
   "dependencies": {
+    "express": "^5.1.0",
+    "@types/express": "^5.0.3",
+    "@types/node": "^24.5.0",
+    "dotenv": "^17.2.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2",
     "@types/bcrypt": "^6.0.0",
     "@types/connect-pg-simple": "^7.0.3",
     "@types/express-session": "^1.18.2",
