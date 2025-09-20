@@ -46,9 +46,14 @@ app.use(
 app.use(passport.session());
 
 app.use((req, res, next) => {
-  res.locals.currentUser = req.user;
-  res.locals.path = req.originalUrl;
-  console.log("Locals", res.locals);
+  res.locals.currentUser = req?.user;
+  res.locals.path = req?.originalUrl;
+
+  // Passport failure messages (array of strings)
+  res.locals.authError = req.session?.messages?.[0] || null;
+
+  // clear messages so they don’t persist forever
+  req.session.messages = [];
   next();
 });
 

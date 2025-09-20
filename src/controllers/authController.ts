@@ -12,15 +12,8 @@ export const loginFormGet = (
   res.render("log-in-form", {
     errors: {},
     old: {},
+    authError: res.locals.authError,
   });
-};
-
-export const loginFormPost = (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
-  const { first_name, last_name, username, password } = req.body;
 };
 
 export const signupFormGet = (

@@ -30,6 +30,9 @@
         <% if (errors.password) {%>
             <div class="error"><%= errors.password.msg %></div>
             <% } %>
+            <% if (authError) { %>
+                <div class="error"><%= authError %></div>
+              <% } %>
         <button type="submit">Log In</button>
         <div class="signupWrapper">
             <p>Don't have an account? <a class="signupLink" href="/sign-up">Sign up</a></p>

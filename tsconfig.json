@@ -9,8 +9,8 @@
     // See also https://aka.ms/tsconfig/module
     "module": "nodenext",
     "target": "esnext",
-    "types": [],
-    "typeRoots": ["./types", "./node_modules/@types"],
+    // "types": [],
+    "typeRoots": ["./src/types", "./node_modules/@types"],
     "baseUrl": "./",
     "paths": {
       "@config/*": ["src/config/*"],

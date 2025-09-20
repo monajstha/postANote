@@ -1,7 +1,6 @@
 import { Router, Request, Response, NextFunction } from "express";
 import {
   loginFormGet,
-  loginFormPost,
   signupFormGet,
   signupFormPost,
 } from "@controllers/authController";
@@ -22,6 +21,7 @@ authRouter.post(
   (req: Request, res: Response, next: NextFunction) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
+      console.log({ errors });
       return res.status(400).render("log-in-form", {
         errors: errors.mapped(),
         old: req.body,
@@ -35,6 +35,7 @@ authRouter.post(
     failureMessage: true, // Displays the message set on done callback when set true, or pass message to overwrite
   })
 );
+
 authRouter.get("/log-out", (req, res, next) => {
   req.logout((err) => {
     if (err) {
