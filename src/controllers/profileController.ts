@@ -33,7 +33,6 @@ export const userClubMemberStatusUpdate = async (
       secret_passcode,
       user?.user_id
     );
-    console.log({ updateResult });
     if (updateResult) {
       return res.status(200).json({ sucess: true });
     } else {

@@ -37,7 +37,6 @@ export const newPostFormPost = async (
   next: NextFunction
 ) => {
   try {
-    console.log("New post form");
     const { post_title, post_text, post_image } = req.body;
     const rowCount = await db.insertNewPost({
       post_title,
@@ -45,7 +44,6 @@ export const newPostFormPost = async (
       post_image: post_image || null,
       user_id: (req.user as IUSer).user_id,
     });
-    console.log({ rowCount });
     if (rowCount) {
       res.status(201).redirect("/");
     }

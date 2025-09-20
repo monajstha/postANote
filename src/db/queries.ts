@@ -130,7 +130,6 @@ export const updateUserClubMemberStatus = async (
       10
     );
     const match = await bcrypt.compare(secret_passcode, hashedSecretPasscode);
-    console.log({ match });
     if (!match) return false;
     const SQL_UPDATE_USER_CLUB_MEMBER_STATUS_QUERY = `
             UPDATE users

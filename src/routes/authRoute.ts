@@ -21,7 +21,6 @@ authRouter.post(
   (req: Request, res: Response, next: NextFunction) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      console.log({ errors });
       return res.status(400).render("log-in-form", {
         errors: errors.mapped(),
         old: req.body,
