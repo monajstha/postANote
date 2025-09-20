@@ -25,7 +25,9 @@ export const newPostFormGet = (
   res: Response,
   next: NextFunction
 ) => {
+  // console.log("req.path", req.path);
   res.render("new-post-form", {
+    path: req.path,
     errors: {},
     old: {},
   });

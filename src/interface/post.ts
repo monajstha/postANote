@@ -10,3 +10,8 @@ export interface IPost extends IPostFormValues {
   created_at: Date;
   updated_at: Date;
 }
+
+export interface IUserPosts {
+  userPosts: IPost[];
+  totalPosts: number;
+}

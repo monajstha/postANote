@@ -7,7 +7,8 @@ import passport from "@config/passport";
 import session from "express-session";
 import connectPgSimple from "connect-pg-simple";
 import pool from "@db/pool";
-import postsRoute from "@routes/postsRoute";
+import postsRoutes from "@routes/postsRoute";
+import profileRoutes from "@routes/profileRoute";
 
 const app = express();
 
@@ -45,15 +46,14 @@ app.use(
 app.use(passport.session());
 
 app.use((req, res, next) => {
-  console.log("Session", req.session);
-  //   req.locals.currentUser = req.user;
-  console.log("req.user", req.user);
+  //   console.log("Session", req.session);
   next();
 });
 
 // Routes
 app.use("/", authRoutes);
-app.use("/posts", postsRoute);
+app.use("/posts", postsRoutes);
+app.use("/profile", profileRoutes);
 
 // Handle all unmatched routes
 app.use((req: Request, res: Response, next: NextFunction) => {
