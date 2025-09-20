@@ -57,6 +57,9 @@ export const signupValidation = checkSchema({
     },
   },
   confirm_password: {
+    notEmpty: {
+      errorMessage: "Password is required",
+    },
     custom: {
       options: (value, { req }) => {
         if (value !== req.body.password) {

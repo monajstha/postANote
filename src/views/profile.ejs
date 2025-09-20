@@ -65,9 +65,7 @@
                 <p>Please enter the secret passcode to become a club member. Being a club member allows you to view the author of the posts.</p>
 
                 <input id="secret_passcode"  type="password" name="secret_passcode" placeholder="Enter the passcode" required/>
-                <% if (errors.secret_passcode) {%>
-                    <div class="error"><%= errors.secret_passcode.msg %></div>
-                <% } %>
+             
                 <div class="dialogBtnWrapper">
                     <button id="cancelCredentialsBtn">Cancel</button>
                     <button id="submitCredentialsBtn">Submit</button>
@@ -80,12 +78,15 @@
         <div>
 
             <h3>Your Info</h3>
-            <p>Name: <%= user.first_name %> <%= user.last_name %></p>
-            <p>Username:  <%= user.username %></p>
-            <% if (user.is_club_member) { %>
-                <p>Club Member</p>
+            <p>Name: <%= locals.currentUser.first_name %> <%= locals.currentUser.last_name %></p>
+            <p>Username:  <%= locals.currentUser.username %></p>
+            <% if (locals.currentUser.is_club_member) { %>
+                <div class="clubMember">Club Member</div>
               <% } else { %>
-               You are not a member.  <button id="joinClubBtn">Join the club</button>
+                <div class="joinBtnWrapper">
+                    <div class="notClubMember"> You are not a member. </div>
+                  <button id="joinClubBtn">Join the club</button>
+                </div>
               <% } %>
               
         </div>

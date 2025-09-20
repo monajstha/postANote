@@ -1,5 +1,5 @@
 body {
-  padding: 0 16px;
+  padding: 0 12px;
 }
 
 p {
@@ -27,7 +27,7 @@ nav {
 
 .navList > li {
   list-style: none;
-  padding: 24px;
+  padding: 12px 24px;
 }
 
 a {
@@ -53,6 +53,17 @@ textarea {
 
 .wrapper {
   padding-right: 24px;
+}
+
+/* Signup */
+.signupWrapper {
+  display: flex;
+  justify-content: center;
+}
+.signupLink {
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 .message {
@@ -174,4 +185,44 @@ textarea {
   padding: 4px 10px;
   font-weight: bold;
   cursor: pointer;
+}
+
+.clubMember {
+  background-color: green;
+  color: white;
+  width: fit-content;
+  padding: 4px;
+}
+
+.joinBtnWrapper {
+  display: flex;
+}
+
+.notClubMember {
+  background-color: red;
+  color: white;
+  width: fit-content;
+  padding: 4px;
+}
+
+#joinClubBtn {
+  margin-left: 4px;
+}
+
+#clubMemberCredentialDialog {
+  width: 40%;
+}
+
+#secret_passcode {
+  width: 95%;
+}
+
+.dialogBtnWrapper {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 8px;
+}
+
+.dialogBtnWrapper > button {
+  margin: 5px 8px;
 }

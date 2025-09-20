@@ -5,23 +5,25 @@
   </head>
   <body>
     <header>
-      <h1>PostAnote</h1>
+      <h1>postAnote</h1>
 
       <nav>
         <ul class="navList">
           <li>
-            <a href="/" class="<%= path === '/'? 'active': ''%>">Home</a>
+            <a href="/" class="<%= locals.path === '/'? 'active': ''%>">Home</a>
           </li>
           <li>
             <a
               href="/posts/new"
-              class="<%= path.startsWith('/new') ? 'active': ''%>"
+              class="<%= locals.path.startsWith('/new') ? 'active': ''%>"
               >New Post</a
             >
           </li>
 
           <li>
-            <a href="/profile" class="<%= path === '/profile'? 'active': ''%>"
+            <a
+              href="/profile"
+              class="<%= locals.path.startsWith('/profile') ? 'active': ''%>"
               >Profile</a
             >
           </li>

@@ -12,12 +12,9 @@ export const profileGet = async (
     const user = req.user as IUSer;
     const { userPosts, totalPosts } = await db.getUserPosts(user.user_id);
     res.render("profile", {
-      path: req.path,
-      user,
       userPosts,
       totalPosts,
       getDayAndTime,
-      errors: {},
     });
   } catch (error) {
     console.log("Error while getting user posts: ", error);

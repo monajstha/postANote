@@ -13,7 +13,6 @@ export const allPostsGet = async (
     const posts = await db.getAllPosts();
     res.render("dashboard", {
       posts,
-      path: req.path,
       getDayAndTime,
       getAvatarInitials,
     });
@@ -27,7 +26,6 @@ export const newPostFormGet = (
 ) => {
   // console.log("req.path", req.path);
   res.render("new-post-form", {
-    path: req.path,
     errors: {},
     old: {},
   });
@@ -39,6 +37,7 @@ export const newPostFormPost = async (
   next: NextFunction
 ) => {
   try {
+    console.log("New post form");
     const { post_title, post_text, post_image } = req.body;
     const rowCount = await db.insertNewPost({
       post_title,
