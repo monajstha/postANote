@@ -4,12 +4,28 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles.css">
     <title>Document</title>
   </head>
   <body>
-    Hello brudda
     <a href="/log-out">
       <button>Logout</button>
     </a>
+    <% posts.forEach((post, index)=> { %>
+        <% const {post_id, post_title, post_text, post_image, user_id, created_at, updated_at, first_name, last_name} = post %>
+        <div class="message">
+            <div class="avatarContainer">
+                <div class="avatar"><%= getAvatarInitials(first_name + " " + last_name) %></div>
+                <div class="nameAndDateContainer">
+                    <p class="userFullName"> <%= first_name %> <%= last_name %>&nbsp;&nbsp;</p>
+                    <p class="date"><%= getDayAndTime(created_at)  %></p>
+                </div>
+            </div>
+           <div class="textContainer">
+               <p class="title"><%= post_title %></p>
+               <p class="text"><%= post_text %></p>
+           </div>
+        </div>
+   <% }) %>
   </body>
 </html>

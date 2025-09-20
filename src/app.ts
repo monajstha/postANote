@@ -1,15 +1,13 @@
 import express, { Request, Response, Express, NextFunction } from "express";
 import { errorHandler } from "@middlewares/errorHandler";
 import authRoutes from "@routes/authRoute";
-import dashboardRoutes from "@routes/dashboardRoute";
-// import categoryRoutes from '@routes/categoryRoutes';
-// import authRoutes from '@routes/authRoutes';
 import path from "path";
 import methodOverride from "method-override";
 import passport from "@config/passport";
 import session from "express-session";
 import connectPgSimple from "connect-pg-simple";
 import pool from "@db/pool";
+import postsRoute from "@routes/postsRoute";
 
 const app = express();
 
@@ -55,6 +53,7 @@ app.use((req, res, next) => {
 
 // Routes
 app.use("/", authRoutes);
+app.use("/posts", postsRoute);
 
 // Handle all unmatched routes
 app.use((req: Request, res: Response, next: NextFunction) => {
