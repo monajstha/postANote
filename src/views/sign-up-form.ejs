@@ -3,21 +3,46 @@
   <head>
     <meta charset="UTF-8" />
     <title>Sign Up</title>
+    <link rel="stylesheet" href="/styles.css">
+
   </head>
   <body>
-    <h1>Sign Up</h1>
-    <form action="/sign-up" method="POST">
-      <label for="first_name">First Name</label>
-      <input id="first_name" name="first_name" />
-      <label for="last_name">Last Name</label>
-      <input id="last_name" name="last_name" />
-      <label for="username">Username</label>
-      <input id="username" name="username" placeholder="username" type="text" />
-      <label for="password">Password</label>
-      <input id="password" name="password" type="password" />
-      <label for="confirm_password">Password</label>
-      <input id="confirm_password" name="confirm_password" type="password" />
-      <button type="submit">Sign Up</button>
-    </form>
+    <div class="formWrapper">
+
+      <h1>Sign Up</h1>
+      <form class="formContainer" action="/sign-up" method="POST">
+          <label for="first_name">First Name</label>
+          <input id="first_name" name="first_name" value="<%= old.first_name || '' %>" />
+          <% if (errors.first_name) { %>
+            <div class="error"><%= errors.first_name.msg %></div>
+          <% } %>
+  
+        <label for="last_name">Last Name</label>
+        <input id="last_name" name="last_name" value="<%= old.last_name || '' %>" />
+        <% if (errors.last_name) { %>
+          <p class="error"><%= errors.last_name.msg %></p>
+        <% } %>
+  
+        <label for="username">Username</label>
+        <input id="username" name="username" type="text" value="<%= old.username || '' %>" />
+        <% if (errors.username) { %>
+          <p class="error"><%= errors.username.msg %></p>
+        <% } %>
+  
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" />
+        <% if (errors.password) { %>
+          <p class="error"><%= errors.password.msg %></p>
+        <% } %>
+  
+        <label for="confirm_password">Confirm Password</label>
+        <input id="confirm_password" name="confirm_password" type="password" />
+        <% if (errors.confirm_password) { %>
+          <p class="error"><%= errors.confirm_password.msg %></p>
+        <% } %>
+  
+        <button type="submit">Sign Up</button>
+      </form>
+    </div>
   </body>
 </html>

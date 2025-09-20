@@ -2,13 +2,17 @@ import { Request, Response, NextFunction } from "express";
 import * as db from "@db/queries";
 import { Result, QueryResult } from "pg";
 import bcrypt from "bcrypt";
+import { validationResult } from "express-validator";
 
 export const loginFormGet = (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
-  res.render("log-in-form");
+  res.render("log-in-form", {
+    errors: {},
+    old: {},
+  });
 };
 
 export const loginFormPost = (
@@ -24,7 +28,10 @@ export const signupFormGet = (
   res: Response,
   next: NextFunction
 ) => {
-  res.render("sign-up-form");
+  res.render("sign-up-form", {
+    errors: {},
+    old: {},
+  });
 };
 
 export const signupFormPost = async (
@@ -33,7 +40,6 @@ export const signupFormPost = async (
   next: NextFunction
 ) => {
   try {
-    console.log(req.body);
     const { first_name, last_name, username, password } = req.body;
     const hashedPassword = await bcrypt.hash(password, 10);
     const rowCount = await db.insertNewUser({

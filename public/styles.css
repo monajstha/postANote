@@ -6,6 +6,11 @@ p {
   padding: 0;
 }
 
+input,
+textarea {
+  padding: 6px;
+}
+
 .message {
   display: flex;
   flex-direction: column;
@@ -67,4 +72,41 @@ p {
   font-size: x-small;
   /* margin-top: 1px; */
   /* margin-top: -0.8rem; */
+}
+
+.error {
+  color: red;
+  font-size: small;
+  margin-top: -8px;
+  margin-bottom: 8px;
+}
+
+.formWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+}
+
+.formContainer > input,
+textarea {
+  margin-bottom: 12px;
+}
+
+.formContainer > label {
+  margin-bottom: 4px;
+}
+
+.formContainer > button {
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  width: 40%;
+  margin-top: 14px;
 }

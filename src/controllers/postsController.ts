@@ -25,7 +25,10 @@ export const newPostFormGet = (
   res: Response,
   next: NextFunction
 ) => {
-  res.render("new-post-form");
+  res.render("new-post-form", {
+    errors: {},
+    old: {},
+  });
 };
 
 export const newPostFormPost = async (

@@ -3,25 +3,37 @@
   <head>
     <meta charset="UTF-8" />
     <title>New Post</title>
+    <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
-    <h1>Write a post</h1>
-    <form action="/posts/new" method="POST">
-      <label for="title">Title</label>
-      <input
-        id="title"
-        name="post_title"
-        placeholder="Enter a title for your post"
-        type="text"
-      />
-      <label for="text">Description</label>
-      <input
-        id="text"
-        name="post_text"
-        type="text"
-        placeholder="Enter the description of your post"
-      />
-      <button type="submit">Post</button>
-    </form>
+    <div class="formWrapper">
+      <h1>Write a post</h1>
+      <form class="formContainer" action="/posts/new" method="POST">
+        <label for="title">Title</label>
+        <input
+          id="title"
+          name="post_title"
+          placeholder="Enter a title for your post"
+          type="text"
+          value="<%= old.post_title %>"
+        />
+        <% if (errors.post_title) {%>
+            <div class="error"><%= errors.post_title.msg %></div>
+        <% }%>
+        <label for="text">Description</label>
+        <textarea
+          id="text"
+          rows="6"
+          name="post_text"
+          type="text"
+          placeholder="Enter the description of your post"
+          value="<%= old.post_text %>"
+        ></textarea>
+        <% if (errors.post_text) {%>
+            <div class="error"><%= errors.post_text.msg %></div>
+        <% }%>
+        <button type="submit">Post</button>
+      </form>
+    </div>
   </body>
 </html>
